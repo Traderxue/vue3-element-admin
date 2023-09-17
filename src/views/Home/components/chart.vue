@@ -29,6 +29,6 @@ onMounted(()=>{
 <style scoped lang="scss">
     .main{
         width: 100%;
-        height: 600px;
+        height: 100%;
     }
 </style>

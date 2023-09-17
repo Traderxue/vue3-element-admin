@@ -43,8 +43,9 @@ const login=()=>{
                 <el-form-item  prop="username">
                     <el-input
                             v-model="ruleForm.username"
-                            placeholder="请输入密码"
+                            placeholder="请输入用户名"
                             class="input-with-select"
+                           
                             >
                             <template #prepend>
                                 <el-icon><User /></el-icon>
@@ -56,6 +57,7 @@ const login=()=>{
                         v-model="ruleForm.password"
                         placeholder="请输入密码"
                         class="input-with-select"
+                        type="password"
                         >
                         <template #prepend>
                             <el-icon><Lock /></el-icon>

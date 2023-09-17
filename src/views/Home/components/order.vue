@@ -13,7 +13,7 @@ const page = reactive({
            // 个数选择器（可修改）
            pageSizes:[1,2,3,4],
            // 默认每页显示的条数（可修改）
-           PageSize:1,
+           PageSize:2,
 })
 
 const myStore = useMyStore()
