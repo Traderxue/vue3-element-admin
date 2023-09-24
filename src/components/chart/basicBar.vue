@@ -16,7 +16,7 @@ const option = {
   grid: {
     left: '3%',
     right: '4%',
-    bottom: '3%',
+    bottom: '5%',
     containLabel: true
   },
   xAxis: [

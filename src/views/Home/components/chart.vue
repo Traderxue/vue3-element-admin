@@ -1,6 +1,8 @@
 <script setup>
 import basicLine from '@/components/chart/basicLine.vue';
 import basicBar from '@/components/chart/basicBar.vue';
+import basicCake from "@/components/chart/basicCake.vue";
+import basicCandle from "@/components/chart/basicCandle.vue"
 </script>
 <template>
      <el-breadcrumb separator="/">
@@ -21,11 +23,13 @@ import basicBar from '@/components/chart/basicBar.vue';
     </el-row>
     <el-row :gutter="60">
         <el-col :span="12">
-            <el-card class="chart">123</el-card>
+            <el-card class="chart">
+                <basicCake title="饼图" height="360px"/>
+            </el-card>
         </el-col>
         <el-col :span="12">
             <el-card class="chart">
-                asd
+                <basicCandle title="k线图" height="360px"/>
             </el-card>
         </el-col>
     </el-row>

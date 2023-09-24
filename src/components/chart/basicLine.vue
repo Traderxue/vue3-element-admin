@@ -10,6 +10,12 @@ const option = {
   tooltip: {
     trigger: 'axis'
   },
+   grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '5%',
+    containLabel: true
+  },
   xAxis: {
     type: 'category',
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
