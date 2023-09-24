@@ -1,5 +1,6 @@
 <script setup>
 import {Delete,Edit} from "@element-plus/icons-vue"
+import { ref } from "vue"
 const tableData = [
   {
     date: '2016-05-03',
@@ -23,9 +24,31 @@ const tableData = [
   },
 ]
 
-const handleSelectionChange =()=>{
-  
+const multipleTableRef = ref(null)
+const multipleSelection = ref([])
+
+const handleSelectionChange =(val)=>{
+  multipleSelection.value= val
 }
+
+const toggleSelection = (rows) => {
+  if (rows) {
+    rows.forEach((row) => {
+      multipleTableRef.value.toggleRowSelection(row, undefined)
+    })
+  } else {
+    multipleTableRef.value.clearSelection()
+  }
+}
+
+const handleAddClick=()=>{
+
+}
+
+const handleDeleteClick= ()=>{
+  console.log(multipleSelection.value)
+}
+
 </script>
 
 <template>
@@ -37,16 +60,16 @@ const handleSelectionChange =()=>{
         <el-card>
               <el-row :gutter="40">
                 <el-col :span="1">
-                <el-button  type="primary" size="small">全选</el-button>
+                <el-button  type="primary" size="small" @click="toggleSelection(tableData)">全选</el-button>
               </el-col>
               <el-col :span="1">
-                <el-button  type="info" size="small">取消</el-button>
+                <el-button  type="info" size="small" @click="toggleSelection()">取消</el-button>
               </el-col>
               <el-col :span="1">
-                <el-button  type="success" size="small">添加</el-button>
+                <el-button  type="success" size="small" @click="handleAddClick">添加</el-button>
               </el-col>
               <el-col :span="1">
-                <el-button  type="danger" size="small">删除</el-button>
+                <el-button  type="danger" size="small" @click="handleDeleteClick">删除</el-button>
               </el-col>
           </el-row>
           
