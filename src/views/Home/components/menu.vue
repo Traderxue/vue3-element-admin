@@ -73,7 +73,7 @@
 
 <style lang="scss" scoped>
 .el-breadcrumb{
-    margin: 20px 0px;
+    margin-bottom: 20px;
 }
 </style>
 
