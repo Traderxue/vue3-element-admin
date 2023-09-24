@@ -1,109 +1,111 @@
 <script setup>
-import * as echarts from 'echarts';
-import option from '@/utils/option.js'
-import {onMounted, ref} from 'vue'
+import { ref } from "vue"
+import basicLine from "@/components/chart/basicLine.vue";
+import basicBar from "@/components/chart/basicBar.vue";
 
-const main = ref(null)
-
-onMounted(()=>{
-    const myChart = echarts.init(main.value)
-     window.addEventListener('resize', function () {     //是图表自适应大小
-      myChart.resize();
-    })
-    option && myChart.setOption(option)
-})
-
+const cardData = ref([
+    {
+        className:"color1",
+        name:"group",
+        title:"今日注册人数",
+        count:3
+    },
+    {
+        className:"color2",
+        name:"currency_yen",
+        title:"用户余额",
+        count:356452
+    },
+    {
+        className:"color3",
+        name:"forward_to_inbox",
+        title:"未读消息",
+        count:15
+    },
+    {
+        className:"color4",
+        name:"currency_bitcoin",
+        title:"交易种类",
+        count:36
+    },
+])
 </script>
-
 <template>
-    <div class="top_card">
-        <el-row :gutter="22">
-        <el-col :span="6">
+    <el-row :gutter="60">
+        <el-col :span="6" v-for="(item,index) in cardData" :key="index">
             <el-card>
-                <div class="card_eve">
-                    <el-icon><UserFilled /></el-icon>
-                    <div class="in_card">
-                        <p>新用户</p>
-                        <p  class="num">2465</p>
+                <div class="box">
+                    <div class="left">
+                        <span :class="item.className" class="material-symbols-outlined">
+                        {{item.name}}
+                        </span>
                     </div>
-                </div>
-            </el-card>
-        </el-col>
-        <el-col :span="6">
-            <el-card>
-            <div class="card_eve">
-                    <el-icon><Comment /></el-icon>
-                    <div class="in_card">
-                        <p>未读消息</p>
-                        <p  class="num">25</p>
-                    </div>
-                </div>
-            </el-card>
-        </el-col>
-        <el-col :span="6">
-            <el-card>
-            <div class="card_eve">
-                <el-icon><Histogram /></el-icon>
-                    <div class="in_card">
-                        <p>员工数据</p>
-                        <p  class="num">2465</p>
-                    </div>
-                </div>
-            </el-card>
-        </el-col>
-        <el-col :span="6">
-            <el-card>
-            <div class="card_eve">
-                <el-icon><Promotion /></el-icon>
-                    <div class="in_card">
-                        <p>商品数据</p>
-                        <p class="num">2465</p>
+                    <div class="right">
+                        <p>{{item.title}}</p>
+                        <span>{{item.count}}</span>
                     </div>
                 </div>
             </el-card>
         </el-col>
     </el-row>
-    </div>    
-    <div class="chart">
-        <el-card>
-            <div id="main" ref="main">
-                
-            </div>
-        </el-card>
-    </div>
+    <el-row :gutter="60">
+        <el-col :span="12">
+            <el-card class="chart">
+                <basicLine title="用户余额统计" height="600px"/>
+            </el-card>
+        </el-col>
+        <el-col :span="12">
+            <el-card class="chart">
+                <basicBar title="用户注册统计" height="600px"/>
+            </el-card>
+        </el-col>
+    </el-row>
 </template>
 
-<style lang="scss" scoped>
-.top_card{
-    margin-bottom:25px ;
+<style scoped lang="scss">
+.el-card{
+    margin-top: 20px;
 }
-.card_eve{
+.box{
     display: flex;
-    justify-content: space-around;
-    .el-icon{
-        font-size: 48px;
-        color: #40C9C6;
+    justify-content: space-between;
+    padding: 0px 15px;
+    .left{
+        span{
+            font-size: 64px;
+        }
     }
-    .in_card{
+    .right{
         text-align: center;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-direction: column;
+        font-weight: 600;
+        font-size: 18px;
         p{
-            font-size: 18px;
             color: #999;
-            font-weight: 600;
-            padding: 5px 0px;
         }
-        .num{
-            font-size: 20px;
-            color: #333;
+        span{
+            color: #555;
         }
     }
+    .color1{
+        color:aquamarine;
+    }
+    .color2{
+        color: #F4516C;
+    }
+    .color3{
+        color:#36A3F7;
+    }
+    .color4{
+        color:#2EC7C9;
+    }
+    
 }
-#main{
-    width: 100%;
-    height: 600px;
-}
-
+.chart{
+        display: block;
+        height: 600px;
+        width: 100%;
+    }
 </style>
