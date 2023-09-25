@@ -71,7 +71,7 @@ window.onresize = ()=>{
               <el-menu-item index="zixun">
                 <el-icon><Promotion /></el-icon>
                 <template #title>
-                  <span>咨询作者</span>
+                  <span>倒计时</span>
                 </template>
               </el-menu-item>
             </el-menu>
