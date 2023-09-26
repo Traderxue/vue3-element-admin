@@ -80,12 +80,18 @@ const handleDeleteClick= ()=>{
             @selection-change="handleSelectionChange"
           >
             <el-table-column type="selection" width="55" />
-            <el-table-column label="Date" width="120">
-              <template #default="scope">{{ scope.row.date }}</template>
+            <el-table-column label="日期" width="120">
+              <template #default="{row}">
+                <span style="color: #11999e;">{{row.date}}</span>
+              </template>
             </el-table-column>
-            <el-table-column property="name" label="Name" width="120" />
-            <el-table-column property="address" label="Address" show-overflow-tooltip />
-            <el-table-column fixed="right" label="Operations" >
+            <el-table-column property="name" label="姓名" width="120" />
+            <el-table-column label="地址">
+              <template #default="{row}">
+                <span style="color: #08d9d6;">{{row.address}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column fixed="right" label="操作" >
               <template #default>
                 <el-button :icon="Delete"  type="danger" size="small"></el-button>
                 <el-button :icon="Edit"  type="warning" size="small"></el-button>

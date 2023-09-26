@@ -67,6 +67,7 @@ const login=()=>{
                 <el-form-item>
                     <el-button type="primary" @click="login">登录</el-button>
                 </el-form-item>
+                <span class="forgetpwd">忘记密码？</span>
             </el-form>
      </div>
 </template>
@@ -84,12 +85,21 @@ const login=()=>{
         padding: 20px;
         margin: 0 auto;
         border-radius: 5px;
+        position: relative;
         .el-form-item{
             margin: 30px 0px;
         }
         .el-button{
             width: 100%;
         }
+    }
+    .forgetpwd{
+        position: absolute;
+        right: 20px;
+        bottom: 40px;
+        font-size: 14px;
+        color: #59ABFF;
+        cursor: pointer;
     }
 
 }

@@ -1,4 +1,5 @@
 <script setup>
+import { ElMessage } from "element-plus"
 import { ref } from "vue"
 import { useRoute, useRouter } from "vue-router"
 
@@ -8,6 +9,7 @@ const route = useRoute()
 const isCollapse = ref(false)
 const logout = ()=>{
   router.push("/login")
+  ElMessage.success("退出成功")
 }
 const changeCollapse = ()=>{
   isCollapse.value = !isCollapse.value
